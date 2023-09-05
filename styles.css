@@ -1,18 +1,27 @@
 body {
-  font-family: Arial, sans-serif;
-}
-
-#container {
-  width: 80%;
-  margin: auto;
-}
-
-#auction-item {
-  border: 1px solid #ccc;
-  padding: 20px;
-  text-align: center;
-}
-
-#timer {
-  font-weight: bold;
-}
+    font-family: Arial, sans-serif;
+  }
+  
+  #container {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .product {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  #auction-item, #timer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

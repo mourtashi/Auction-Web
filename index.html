@@ -9,17 +9,29 @@
 
   <div id="container">
     <h1>Auction Site</h1>
+    
+    <div id="product-list">
+      <div class="product" onclick="showProduct('Laptop', 100)">
+        <h2>Laptop</h2>
+      </div>
+      <div class="product" onclick="showProduct('Camera', 50)">
+        <h2>Camera</h2>
+      </div>
+      <div class="product" onclick="showProduct('Phone', 30)">
+        <h2>Phone</h2>
+      </div>
+    </div>
 
-    <div id="auction-item">
-      <h2>Item: Laptop</h2>
-      <img src="/Users/ourtashi/Desktop/Co/Cloned Repos/Auction-Web/Img/Laptop.jpg" alt="Laptop" width="300">
-      <p>Current Bid: <span id="current-bid">100</span></p>
-      <input type="number" id="new-bid" min="101">
+    <div id="auction-item" class="hidden">
+      <button onclick="hideProduct()">Back to List</button>
+      <h2 id="item-name"></h2>
+      <p>Current Bid: <span id="current-bid"></span></p>
+      <input type="number" id="new-bid" min="0">
       <button onclick="placeBid()">Place Bid</button>
     </div>
 
-    <div id="timer">
-      Time Remaining: <span id="time-remaining">10:00</span>
+    <div id="timer" class="hidden">
+      Time Remaining: <span id="time-remaining"></span>
     </div>
   </div>
 
