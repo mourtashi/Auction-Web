@@ -2,13 +2,21 @@ let currentBid = 0;
 let remainingMinutes = 9;
 let remainingSeconds = 59;
 let timer;
+let currentProduct = null;
+let highestBids = {}; // To keep track of highest bids for each product
 
 function showProduct(name, initialBid, description) {
+  currentProduct = name;
+
+  if (!highestBids[currentProduct]) {
+    highestBids[currentProduct] = initialBid;
+  }
+
   document.getElementById('item-name').innerText = name;
   document.getElementById('item-description').innerText = description;
-  document.getElementById('current-bid').innerText = initialBid;
-  document.getElementById('new-bid').min = initialBid + 1;
-  currentBid = initialBid;
+  document.getElementById('current-bid').innerText = highestBids[currentProduct];
+  document.getElementById('new-bid').min = highestBids[currentProduct] + 1;
+  currentBid = highestBids[currentProduct];
 
   document.getElementById('product-grid').classList.add('hidden');
   document.getElementById('auction-item').classList.remove('hidden');
@@ -32,6 +40,7 @@ function placeBid() {
   const newBid = parseInt(document.getElementById('new-bid').value);
   if (newBid > currentBid) {
     currentBid = newBid;
+    highestBids[currentProduct] = currentBid; // Update the highest bid for the current product
     document.getElementById('current-bid').innerText = currentBid;
     document.getElementById('new-bid').min = currentBid + 1;
   } else {
