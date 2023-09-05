@@ -1,0 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#container {
+  width: 80%;
+  margin: auto;
+}
+
+#auction-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+#timer {
+  font-weight: bold;
+}
