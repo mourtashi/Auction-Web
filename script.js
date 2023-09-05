@@ -1,22 +1,19 @@
-// Variables
 let currentBid = 0;
 let remainingMinutes = 9;
 let remainingSeconds = 59;
 let timer;
 
-function showProduct(name, initialBid) {
-  // Display selected product information
+function showProduct(name, initialBid, description) {
   document.getElementById('item-name').innerText = name;
+  document.getElementById('item-description').innerText = description;
   document.getElementById('current-bid').innerText = initialBid;
   document.getElementById('new-bid').min = initialBid + 1;
   currentBid = initialBid;
 
-  // Hide product list and show auction details
-  document.getElementById('product-list').classList.add('hidden');
+  document.getElementById('product-grid').classList.add('hidden');
   document.getElementById('auction-item').classList.remove('hidden');
   document.getElementById('timer').classList.remove('hidden');
-  
-  // Start the timer
+
   if (timer) {
     clearInterval(timer);
   }
@@ -24,12 +21,10 @@ function showProduct(name, initialBid) {
 }
 
 function hideProduct() {
-  // Hide auction details and show product list
   document.getElementById('auction-item').classList.add('hidden');
   document.getElementById('timer').classList.add('hidden');
-  document.getElementById('product-list').classList.remove('hidden');
-  
-  // Stop the timer
+  document.getElementById('product-grid').classList.remove('hidden');
+
   clearInterval(timer);
 }
 
@@ -45,11 +40,9 @@ function placeBid() {
 }
 
 function updateTimer() {
-  // Update the timer display
   document.getElementById('time-remaining').innerText = 
     `${remainingMinutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
 
-  // Decrement time
   if (remainingSeconds === 0) {
     if (remainingMinutes === 0) {
       clearInterval(timer);

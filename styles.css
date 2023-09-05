@@ -7,11 +7,26 @@ body {
     margin: auto;
   }
   
-  .product {
+  #product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* Adjust this based on your layout */
+    gap: 16px;
+  }
+  
+  .product-card {
     border: 1px solid #ccc;
-    padding: 20px;
+    padding: 16px;
     text-align: center;
     cursor: pointer;
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .hidden {
+    display: none;
   }
   
   #auction-item, #timer {
@@ -19,9 +34,5 @@ body {
     padding: 20px;
     text-align: center;
     margin-top: 20px;
-  }
-  
-  .hidden {
-    display: none;
   }
   

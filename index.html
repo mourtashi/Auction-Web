@@ -9,22 +9,30 @@
 
   <div id="container">
     <h1>Auction Site</h1>
-    
-    <div id="product-list">
-      <div class="product" onclick="showProduct('Laptop', 100)">
-        <h2>Laptop</h2>
+
+    <div id="product-grid">
+      <div class="product-card" onclick="showProduct('Laptop', 100, 'High-end laptop for gaming and work.')">
+        <img src="/Users/ourtashi/Desktop/Co/Cloned Repos/Auction-Web/Img/Laptop.jpg" alt="Laptop">
+        <h3>Laptop</h3>
+        <p>High-end laptop for gaming and work.</p>
       </div>
-      <div class="product" onclick="showProduct('Camera', 50)">
-        <h2>Camera</h2>
+      <div class="product-card" onclick="showProduct('Camera', 50, 'Capture beautiful moments with this camera.')">
+        <img src="camera.jpg" alt="Camera">
+        <h3>Camera</h3>
+        <p>Capture beautiful moments with this camera.</p>
       </div>
-      <div class="product" onclick="showProduct('Phone', 30)">
-        <h2>Phone</h2>
+      <div class="product-card" onclick="showProduct('Phone', 30, 'Stay connected with this smartphone.')">
+        <img src="phone.jpg" alt="Phone">
+        <h3>Phone</h3>
+        <p>Stay connected with this smartphone.</p>
       </div>
+      <!-- Add more products here -->
     </div>
 
     <div id="auction-item" class="hidden">
-      <button onclick="hideProduct()">Back to List</button>
+      <button onclick="hideProduct()">Back to Grid</button>
       <h2 id="item-name"></h2>
+      <p id="item-description"></p>
       <p>Current Bid: <span id="current-bid"></span></p>
       <input type="number" id="new-bid" min="0">
       <button onclick="placeBid()">Place Bid</button>
