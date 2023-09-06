@@ -1,68 +1,55 @@
-let currentBid = 0;
-let remainingMinutes = 9;
-let remainingSeconds = 59;
-let timer;
-let currentProduct = null;
-let highestBids = {}; // To keep track of highest bids for each product
+// Simulating a backend response with some products
+const products = [
+  { id: 1, name: "Laptop", description: "High-end laptop.", initialBid: 100, image: "laptop.jpg" },
+  { id: 2, name: "Camera", description: "DSLR Camera.", initialBid: 200, image: "camera.jpg" },
+  // Add more products
+];
 
-function showProduct(name, initialBid, description) {
-  currentProduct = name;
-
-  if (!highestBids[currentProduct]) {
-    highestBids[currentProduct] = initialBid;
-  }
-
-  document.getElementById('item-name').innerText = name;
-  document.getElementById('item-description').innerText = description;
-  document.getElementById('current-bid').innerText = highestBids[currentProduct];
-  document.getElementById('new-bid').min = highestBids[currentProduct] + 1;
-  currentBid = highestBids[currentProduct];
-
-  document.getElementById('product-grid').classList.add('hidden');
-  document.getElementById('auction-item').classList.remove('hidden');
-  document.getElementById('timer').classList.remove('hidden');
-
-  if (timer) {
-    clearInterval(timer);
-  }
-  timer = setInterval(updateTimer, 1000);
+// Populating the product grid dynamically
+function loadProducts() {
+  const productGrid = document.getElementById("product-grid");
+  products.forEach(product => {
+    const productCard = document.createElement("a");
+    productCard.className = "product-card";
+    productCard.href = `product.html?id=${product.id}`;
+    
+    const productImage = document.createElement("img");
+    productImage.src = product.image;
+    productImage.alt = product.name;
+    
+    const productName = document.createElement("h3");
+    productName.textContent = product.name;
+    
+    const productDescription = document.createElement("p");
+    productDescription.textContent = product.description;
+    
+    productCard.append(productImage, productName, productDescription);
+    productGrid.appendChild(productCard);
+  });
 }
 
-function hideProduct() {
-  document.getElementById('auction-item').classList.add('hidden');
-  document.getElementById('timer').classList.add('hidden');
-  document.getElementById('product-grid').classList.remove('hidden');
-
-  clearInterval(timer);
-}
-
-function placeBid() {
-  const newBid = parseInt(document.getElementById('new-bid').value);
-  if (newBid > currentBid) {
-    currentBid = newBid;
-    highestBids[currentProduct] = currentBid; // Update the highest bid for the current product
-    document.getElementById('current-bid').innerText = currentBid;
-    document.getElementById('new-bid').min = currentBid + 1;
-  } else {
-    alert('Your bid must be higher than the current bid.');
+// Loading individual product details
+function loadProduct() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get('id');
+  const product = products.find(p => p.id == id); // Replace with API call in a real app
+  
+  if (product) {
+    document.getElementById("product-title").textContent = `${product.name} - Auction Site`;
+    document.getElementById("product-name").textContent = product.name;
+    document.getElementById("product-description").textContent = product.description;
+    document.getElementById("product-image").src = product.image;
+    document.getElementById("current-bid").textContent = product.initialBid;
+    document.getElementById("new-bid").min = product.initialBid + 1;
   }
 }
 
-function updateTimer() {
-  document.getElementById('time-remaining').innerText = 
-    `${remainingMinutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+// If we are on the index page, load the product grid
+if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/') {
+  loadProducts();
+}
 
-  if (remainingSeconds === 0) {
-    if (remainingMinutes === 0) {
-      clearInterval(timer);
-      alert('Auction ended.');
-      hideProduct();
-      return;
-    } else {
-      remainingMinutes--;
-      remainingSeconds = 59;
-    }
-  } else {
-    remainingSeconds--;
-  }
+// If we are on a product page, load the individual product
+if (window.location.pathname.endsWith('product.html')) {
+  loadProduct();
 }
