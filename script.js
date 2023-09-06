@@ -73,3 +73,16 @@ if (window.location.pathname.endsWith('create.html')) {
     }
   });
 }
+
+// ...
+if (createButton) {
+  console.log('Found the create button, adding event listener.'); // Debug line
+  createButton.addEventListener('click', function() {
+    console.log('Create button clicked.'); // Debug line
+    window.location.href = 'create.html';
+  });
+} else {
+  console.log('Create button not found.'); // Debug line
+}
+// ...
+
