@@ -2,38 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Create New Listing</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Create Listing</title>
 </head>
 <body>
 
-  <div id="container">
-    <h1>Create New Listing</h1>
-    <form id="create-form">
-      <label for="name">Product Name:</label>
-      <input type="text" id="name" name="name" required><br>
+  <h1>Create New Product</h1>
 
-      <label for="description">Description:</label>
-      <textarea id="description" name="description" required></textarea><br>
-
-      <label for="quality">Quality:</label>
-      <input type="text" id="quality" name="quality" required><br>
-
-      <label for="condition">Condition:</label>
-      <input type="text" id="condition" name="condition" required><br>
-
-      <label for="initialBid">Starting Price:</label>
-      <input type="number" id="initialBid" name="initialBid" min="0" required><br>
-
-      <label for="buyNowPrice">Buy It Now Price:</label>
-      <input type="number" id="buyNowPrice" name="buyNowPrice" min="0"><br>
-
-      <label for="image">Image URL:</label>
-      <input type="text" id="image" name="image"><br>
-
-      <input type="submit" value="Create Listing">
-    </form>
-  </div>
+  <form id="create-form">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="description" placeholder="Description">
+    <input type="text" name="quality" placeholder="Quality">
+    <input type="text" name="condition" placeholder="Condition">
+    <input type="number" name="initialBid" placeholder="Initial Bid">
+    <input type="number" name="buyNowPrice" placeholder="Buy Now Price">
+    <input type="text" name="image" placeholder="Image URL">
+    <button type="submit">Create</button>
+  </form>
 
   <script src="script.js"></script>
 </body>
